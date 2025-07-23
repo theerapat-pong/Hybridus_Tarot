@@ -1,0 +1,84 @@
+
+{
+  "TarotReader": {
+    "title": "Hybridus Tarot",
+    "subtitle": "Unveil your destiny, a 3-card spread at a time.",
+    "drawButton": "Get My Reading",
+    "shufflingStatus": "Shuffling...",
+    "submitButton": "Submit Question",
+    "shuffleButton": "Shuffle Cards",
+    "clickToShuffle": "Click the deck to shuffle.",
+    "drawThreeCards": "Select 3 cards that speak to your question.",
+    "askAnotherQuestion": "Ask Another Question",
+    "questionPlaceholder": "Ask your question here... ",
+    "cardAwaits": "Your cards await...",
+    "footer": "Tarot predictions are a matter of personal belief. Please use your discretion.",
+    "validation": {
+      "questionRequired": "Please enter a question (at least 10 characters)."
+    },
+    "conclusionLabel": "Conclusion",
+    "cardsSelected": "{count}/3 Cards Selected"
+  },
+  "TarotPositions": {
+    "past": "The Past",
+    "present": "The Present",
+    "future": "The Future"
+  },
+  "ReadingDisplay": {
+    "consulting": "Consulting the cosmos...",
+    "readingFor": "Reading for: {cardName}",
+    "yourReading": "Your Reading",
+    "copyButton": "Copy Reading",
+    "drawCardPrompt": "Draw your cards to receive guidance from the universe.",
+    "copySuccessTitle": "Copied to clipboard!",
+    "copySuccessDescription": "Your tarot reading is now in your clipboard.",
+    "copyErrorTitle": "Copy Failed",
+    "copyErrorDescription": "Could not copy to clipboard. Please try again or copy manually.",
+    "error": "An error occurred while preparing your reading."
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "en": "English",
+    "th": "Thai"
+  },
+  "Metadata": {
+    "title": "Hybridus Tarot | Online Tarot Reading",
+    "description": "Get instant, personalized tarot readings. Explore the meanings of the cards and gain insight into your life's journey."
+  },
+  "UserInfoForm": {
+    "title": "Hybridus Tarot",
+    "subtitle": "Enter your details to begin your journey.",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "e.g. John",
+    "middleName": "Middle Name",
+    "middleNamePlaceholder": "e.g. Lee",
+    "middleNameDescription": "Optional",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "e.g. Doe",
+    "dob": "Date of Birth",
+    "dobPlaceholder": "Pick a date",
+    "submitButton": "See My Reading",
+    "submittingButton": "Saving...",
+    "wednesdayShift": "For Wednesday births, please specify day or night:",
+    "wednesdayShiftDay": "Day (6:00 AM - 5:59 PM)",
+    "wednesdayShiftNight": "Night (6:00 PM - 5:59 AM)",
+    "validation": {
+      "firstNameRequired": "First name is required.",
+      "lastNameRequired": "Last name is required.",
+      "dobRequired": "Your date of birth is required.",
+      "wednesdayShiftRequired": "Please select day or night for Wednesday."
+    }
+  },
+  "SpreadExplanation": {
+    "title": "Past, Present, and Future Spread",
+    "past": "Represents your past experiences and events that influence your current situation.",
+    "present": "Reflects your current situation, challenges, and feelings at this moment.",
+    "future": "Indicates the potential outcome or direction, based on your current path."
+  },
+  "WelcomePage": {
+    "title": "Hybridus Tarot",
+    "subtitle": "Unveil your destiny, a 3-card spread at a time.",
+    "beginButton": "Begin Your Journey",
+    "footer": "Tarot predictions are a matter of personal belief. Please use your discretion."
+  }
+}

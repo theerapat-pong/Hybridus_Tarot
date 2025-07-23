@@ -72,7 +72,7 @@ const prompt = ai.definePrompt({
   name: 'generateTarotReadingPrompt',
   input: {schema: GenerateTarotReadingInputSchema},
   output: {schema: GenerateTarotReadingOutputSchema},
-  model: 'googleai/gemini-1.5-flash-latest',
+  model: 'googleai/gemini-2.5-flash-latest',
   config: {
     safetySettings: [
       {

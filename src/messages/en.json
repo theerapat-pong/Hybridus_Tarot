@@ -80,5 +80,29 @@
     "subtitle": "Unveil your destiny, a 3-card spread at a time.",
     "beginButton": "Begin Your Journey",
     "footer": "Tarot predictions are a matter of personal belief. Please use your discretion."
+  },
+  "SocialShare": {
+    "shareButton": "Share Your Reading",
+    "shareTitle": "Share Your Tarot Reading",
+    "previewTitle": "Your Reading Preview",
+    "past": "Past",
+    "present": "Present", 
+    "future": "Future",
+    "shareOptions": "Share Options",
+    "copyLink": "Copy Link",
+    "downloadImage": "Download Image",
+    "generating": "Generating...",
+    "copySuccess": "Copied to clipboard!",
+    "copyDescription": "Your reading text has been copied to clipboard.",
+    "copyError": "Copy failed",
+    "copyErrorDescription": "Could not copy to clipboard. Please try again.",
+    "downloadSuccess": "Image downloaded!",
+    "downloadDescription": "Your reading image has been saved to your device.",
+    "downloadError": "Download failed",
+    "downloadErrorDescription": "Could not download the image. Please try again.",
+    "instagramCopyTitle": "Text copied for Instagram!",
+    "instagramCopyDescription": "Paste this text when sharing your reading image on Instagram.",
+    "tipTitle": "Pro Tip:",
+    "tipDescription": "Download the image and share it on Instagram Stories, then paste the copied text as your caption!"
   }
 }

@@ -160,6 +160,15 @@
   .animate-shuffle-right {
     animation: shuffle-right 1s ease-in-out;
   }
+  
+  /* Line clamp utilities */
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
   @keyframes fade-in-up {
       from {
         opacity: 0;

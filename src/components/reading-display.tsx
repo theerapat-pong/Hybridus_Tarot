@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Copy, Hourglass, ArrowRight, Lightbulb, Sparkles } from 'lucide-react';
@@ -8,12 +9,23 @@ import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import type { GenerateTarotReadingOutput } from '@/ai/flows/generate-tarot-reading';
-import { Share2Icon } from "lucide-react";
+import { SocialShare } from '@/components/social-share';
+import { TarotCard as TarotCardType } from '@/lib/tarot-data';
 
 interface ReadingDisplayProps {
   reading: GenerateTarotReadingOutput | string | null;
   isLoading: boolean;
   cardNames: string[] | null;
+  cards?: TarotCardType[];
+  question?: string;
+}
+
+interface ReadingDisplayProps {
+  reading: GenerateTarotReadingOutput | string | null;
+  isLoading: boolean;
+  cardNames: string[] | null;
+  cards?: TarotCardType[];
+  question?: string;
 }
 
 const sectionIcons: { [key in keyof Omit<GenerateTarotReadingOutput, 'initialSummary'>]: React.ElementType } = {
@@ -23,7 +35,7 @@ const sectionIcons: { [key in keyof Omit<GenerateTarotReadingOutput, 'initialSum
   conclusion: Lightbulb,
 };
 
-export function ReadingDisplay({ reading, isLoading, cardNames }: ReadingDisplayProps) {
+export function ReadingDisplay({ reading, isLoading, cardNames, cards, question }: ReadingDisplayProps) {
   const t = useTranslations('ReadingDisplay');
   const { toast } = useToast();
 
@@ -54,14 +66,6 @@ export function ReadingDisplay({ reading, isLoading, cardNames }: ReadingDisplay
     }
   };
   
-  const handleShare = () => {
-    if (!reading || typeof reading === 'string') return;
-    const url = new URL('/api/og', window.location.origin);
-    url.searchParams.set('cardNames', JSON.stringify(cardNames));
-    url.searchParams.set('summary', reading.initialSummary || '');
-    window.open(url.toString(), '_blank');
-  };
-
   const displayCardNames = cardNames?.join(' • ');
 
   const renderContent = () => {
@@ -112,19 +116,28 @@ export function ReadingDisplay({ reading, isLoading, cardNames }: ReadingDisplay
               <Icon className="h-5 w-5 mt-1 text-primary shrink-0" />
               <div className="flex-1">
                 <h3 className="font-headline text-lg text-primary">{section.title}</h3>
-                <p className="whitespace-pre-wrap font-light text-stone-300 leading-relaxed tracking-wide mt-2">
-                  {section.body}
+                <p className="whitespace-pre-wrap font-body text-card-foreground/90 leading-relaxed text-base mt-1">
+                  {section.body.trim()}
                 </p>
               </div>
             </div>
           )
         })}
 
-        <div className="flex justify-center mt-8">
-          <Button onClick={handleShare} variant="outline" className="rounded-full">
-            <Share2Icon className="mr-2 h-4 w-4" />
-            Share your reading
+        <div className="flex flex-col sm:flex-row gap-3 mt-6">
+          <Button onClick={handleCopy} variant="outline" size="sm" className="rounded-full">
+            <Copy className="mr-2 h-4 w-4" />
+            {t('copyButton')}
           </Button>
+          
+          {reading && typeof reading !== 'string' && cardNames && cards && (
+            <SocialShare 
+              reading={reading} 
+              cardNames={cardNames} 
+              cards={cards}
+              question={question}
+            />
+          )}
         </div>
       </div>
     );

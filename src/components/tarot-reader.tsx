@@ -232,6 +232,8 @@ export function TarotReader({ firstName, middleName, lastName, dob, wednesdayShi
                   reading={reading} 
                   isLoading={isReadingLoading} 
                   cardNames={flipped.every(f => f) ? drawnCards.map(c => c.name) : null}
+                  cards={flipped.every(f => f) ? drawnCards : undefined}
+                  question={questionValue}
                 />
               </div>
             )}

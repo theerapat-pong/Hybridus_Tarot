@@ -1,0 +1,107 @@
+{
+  "TarotReader": {
+    "title": "Hybridus Tarot",
+    "subtitle": "เปิดชะตาของคุณ ด้วยการวางไพ่ 3 ใบ",
+    "drawButton": "รับคำทำนาย",
+    "shufflingStatus": "กำลังสับไพ่...",
+    "submitButton": "ส่งคำถาม",
+    "shuffleButton": "สับไพ่",
+    "clickToShuffle": "คลิกที่กองไพ่เพื่อเริ่มสับไพ่",
+    "drawThreeCards": "เลือกไพ่ 3 ใบที่สื่อถึงคำถามของคุณ",
+    "askAnotherQuestion": "ถามคำถามอื่น",
+    "questionPlaceholder": "พิมพ์คำถามของคุณที่นี่...",
+    "cardAwaits": "ไพ่ของคุณรออยู่...",
+    "footer": "คำทำนายจากไพ่ทาโรต์เป็นความเชื่อส่วนบุคคล โปรดใช้วิจารณญาณในการใช้งาน",
+    "validation": {
+      "questionRequired": "กรุณาพิมพ์คำถาม (อย่างน้อย 10 ตัวอักษร)"
+    },
+    "conclusionLabel": "บทสรุป",
+    "cardsSelected": "เลือกไพ่แล้ว {count}/3 ใบ"
+  },
+  "TarotPositions": {
+    "past": "อดีต",
+    "present": "ปัจจุบัน",
+    "future": "อนาคต"
+  },
+  "ReadingDisplay": {
+    "consulting": "กำลังปรึกษาจักรวาล...",
+    "readingFor": "คำทำนายสำหรับ: {cardName}",
+    "yourReading": "คำทำนายของคุณ",
+    "copyButton": "คัดลอกคำทำนาย",
+    "drawCardPrompt": "เปิดไพ่เพื่อรับคำแนะนำจากจักรวาล",
+    "copySuccessTitle": "คัดลอกไปยังคลิปบอร์ดแล้ว!",
+    "copySuccessDescription": "คำทำนายไพ่ทาโรต์ของคุณอยู่ในคลิปบอร์ดแล้ว",
+    "copyErrorTitle": "คัดลอกไม่สำเร็จ",
+    "copyErrorDescription": "ไม่สามารถคัดลอกไปยังคลิปบอร์ดได้ โปรดลองอีกครั้งหรือคัดลอกด้วยตนเอง",
+    "error": "เกิดข้อผิดพลาดขณะเตรียมคำทำนายของคุณ"
+  },
+  "LocaleSwitcher": {
+    "label": "เปลี่ยนภาษา",
+    "en": "อังกฤษ",
+    "th": "ไทย"
+  },
+  "Metadata": {
+    "title": "Hybridus Tarot | ดูดวงไพ่ยิปซีออนไลน์",
+    "description": "รับคำทำนายไพ่ทาโรต์ส่วนตัวทันที สำรวจความหมายของไพ่และรับข้อมูลเชิงลึกเกี่ยวกับการเดินทางในชีวิตของคุณ"
+  },
+  "UserInfoForm": {
+    "title": "Hybridus Tarot",
+    "subtitle": "กรอกข้อมูลเพื่อเริ่มต้นการเดินทางของคุณ",
+    "firstName": "ชื่อจริง",
+    "firstNamePlaceholder": "เช่น สมชาย",
+    "middleName": "ชื่อกลาง",
+    "middleNamePlaceholder": "เช่น มงคล",
+    "middleNameDescription": "ไม่บังคับ",
+    "lastName": "นามสกุล",
+    "lastNamePlaceholder": "เช่น สุขดี",
+    "dob": "วันเกิด",
+    "dobPlaceholder": "เลือกวันที่",
+    "submitButton": "ดูคำทำนาย",
+    "submittingButton": "กำลังบันทึก...",
+    "wednesdayShift": "สำหรับผู้ที่เกิดในวันพุธ โปรดระบุช่วงเวลา:",
+    "wednesdayShiftDay": "กลางวัน (06:00 - 17:59)",
+    "wednesdayShiftNight": "กลางคืน (18:00 - 05:59)",
+    "validation": {
+      "firstNameRequired": "กรุณากรอกชื่อจริง",
+      "lastNameRequired": "กรุณากรอกนามสกุล",
+      "dobRequired": "กรุณาระบุวันเกิด",
+      "wednesdayShiftRequired": "กรุณาเลือกช่วงเวลาสำหรับวันพุธ"
+    }
+  },
+  "SpreadExplanation": {
+    "title": "การวางไพ่ อดีต ปัจจุบัน และอนาคต",
+    "past": "แสดงถึงประสบการณ์และเหตุการณ์ในอดีตที่มีอิทธิพลต่อสถานการณ์ปัจจุบันของคุณ",
+    "present": "สะท้อนสถานการณ์ปัจจุบัน ความท้าทาย และความรู้สึกของคุณในขณะนี้",
+    "future": "บ่งบอกถึงผลลัพธ์หรือทิศทางที่เป็นไปได้ ขึ้นอยู่กับเส้นทางปัจจุบันของคุณ"
+  },
+  "WelcomePage": {
+    "title": "Hybridus Tarot",
+    "subtitle": "เปิดชะตาของคุณ ด้วยการวางไพ่ 3 ใบ",
+    "beginButton": "เริ่มต้นการเดินทาง",
+    "footer": "คำทำนายจากไพ่ทาโรต์เป็นความเชื่อส่วนบุคคล โปรดใช้วิจารณญาณในการใช้งาน"
+  },
+  "SocialShare": {
+    "shareButton": "แชร์คำทำนาย",
+    "shareTitle": "แชร์คำทำนายไพ่ทาโรต์",
+    "previewTitle": "ตัวอย่างคำทำนายของคุณ",
+    "past": "อดีต",
+    "present": "ปัจจุบัน",
+    "future": "อนาคต", 
+    "shareOptions": "ตัวเลือกการแชร์",
+    "copyLink": "คัดลอกลิงก์",
+    "downloadImage": "ดาวน์โหลดรูปภาพ",
+    "generating": "กำลังสร้าง...",
+    "copySuccess": "คัดลอกไปยังคลิปบอร์ดแล้ว!",
+    "copyDescription": "ข้อความคำทำนายของคุณถูกคัดลอกไปยังคลิปบอร์ดแล้ว",
+    "copyError": "คัดลอกไม่สำเร็จ",
+    "copyErrorDescription": "ไม่สามารถคัดลอกไปยังคลิปบอร์ดได้ โปรดลองอีกครั้ง",
+    "downloadSuccess": "ดาวน์โหลดรูปภาพแล้ว!",
+    "downloadDescription": "รูปภาพคำทำนายของคุณถูกบันทึกในอุปกรณ์แล้ว",
+    "downloadError": "ดาวน์โหลดไม่สำเร็จ",
+    "downloadErrorDescription": "ไม่สามารถดาวน์โหลดรูปภาพได้ โปรดลองอีกครั้ง",
+    "instagramCopyTitle": "คัดลอกข้อความสำหรับ Instagram แล้ว!",
+    "instagramCopyDescription": "วางข้อความนี้เมื่อแชร์รูปภาพคำทำนายบน Instagram",
+    "tipTitle": "เคล็ดลับ:",
+    "tipDescription": "ดาวน์โหลดรูปภาพและแชร์บน Instagram Stories จากนั้นวางข้อความที่คัดลอกไว้เป็นคำบรรยาย!"
+  }
+}

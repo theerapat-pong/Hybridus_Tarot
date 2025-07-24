@@ -10,6 +10,9 @@ export async function GET(request: NextRequest) {
     const summary = searchParams.get('summary') || ''
     const question = searchParams.get('question') || ''
 
+    // Truncate summary to fit in image
+    const truncatedSummary = summary.length > 300 ? summary.substring(0, 300) + '...' : summary
+
     return new ImageResponse(
       (
         <div
@@ -22,7 +25,7 @@ export async function GET(request: NextRequest) {
             justifyContent: 'center',
             backgroundColor: '#0a0a0b',
             backgroundImage: 'radial-gradient(circle at 25% 25%, #1e1b4b 0%, transparent 50%), radial-gradient(circle at 75% 75%, #451a03 0%, transparent 50%)',
-            padding: '60px',
+            padding: '40px',
             position: 'relative',
           }}
         >
@@ -138,18 +141,15 @@ export async function GET(request: NextRequest) {
             >
               <p
                 style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: '#f8fafc',
                   margin: '0',
                   textAlign: 'center',
-                  lineHeight: '1.6',
-                  display: '-webkit-box',
-                  WebkitLineClamp: 4,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden',
+                  lineHeight: '1.5',
+                  whiteSpace: 'pre-wrap',
                 }}
               >
-                {summary.length > 300 ? summary.substring(0, 300) + '...' : summary}
+                {truncatedSummary}
               </p>
             </div>
           )}

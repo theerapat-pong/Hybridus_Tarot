@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { GenerateTarotReadingOutput } from '@/ai/flows/generate-tarot-reading';
 import { SocialShare } from '@/components/social-share';
 import { TarotCard as TarotCardType } from '@/lib/tarot-data';
@@ -38,6 +38,24 @@ const sectionIcons: { [key in keyof Omit<GenerateTarotReadingOutput, 'initialSum
 export function ReadingDisplay({ reading, isLoading, cardNames, cards, question }: ReadingDisplayProps) {
   const t = useTranslations('ReadingDisplay');
   const { toast } = useToast();
+
+  // Preload card images for faster display
+  useEffect(() => {
+    if (cards && cards.length > 0) {
+      cards.forEach((card, index) => {
+        if (card.image) {
+          const img = new Image();
+          img.src = card.image;
+          // Add slight delay for past card to prevent loading order issues
+          if (index === 0) {
+            setTimeout(() => {
+              img.src = card.image;
+            }, 100);
+          }
+        }
+      });
+    }
+  }, [cards]);
 
   const handleCopy = async () => {
     if (reading && typeof reading !== 'string') {

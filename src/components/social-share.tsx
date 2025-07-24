@@ -23,7 +23,7 @@ export function SocialShare({ reading, cardNames, cards, question }: SocialShare
   const { toast } = useToast();
   const t = useTranslations('SocialShare');
 
-  const shareText = `🔮 ได้รับคำทำนายไพ่ทาโรต์จาก Hybridus Tarot แล้ว!\n\n✨ ไพ่ทั้ง 3 ใบของฉัน: ${cardNames.join(' • ')}\n\n${reading.initialSummary.substring(0, 150)}...\n\n#HybridusTarot #Tarot #ไพ่ทาโรต์`;
+  const shareText = `🔮 ได้รับคำทำนายไพ่ทาโรต์จาก Hybridus Tarot แล้ว!\n\n✨ ไพ่ทั้ง 3 ใบของฉัน: ${cardNames.join(' • ')}\n\n📝 ${reading.initialSummary.length > 200 ? reading.initialSummary.substring(0, 200) + '...' : reading.initialSummary}\n\n#HybridusTarot #Tarot #ไพ่ทาโรต์`;
 
   const generateOGImage = async (): Promise<string> => {
     const params = new URLSearchParams({
@@ -37,25 +37,60 @@ export function SocialShare({ reading, cardNames, cards, question }: SocialShare
 
   const handleCopyLink = async () => {
     try {
-      const url = window.location.origin;
-      await navigator.clipboard.writeText(`${shareText}\n\n🌟 ลองดูดวงที่: ${url}`);
+      // Store reading data in localStorage for sharing
+      const readingData = {
+        reading,
+        cardNames,
+        cards: cards?.map(card => ({ name: card.name, image: card.image })),
+        question,
+        timestamp: Date.now()
+      };
+      
+      const shareId = btoa(JSON.stringify(readingData)).replace(/[+/=]/g, '');
+      localStorage.setItem(`tarot-reading-${shareId}`, JSON.stringify(readingData));
+      
+      const shareUrl = `${window.location.origin}/share/${shareId}`;
+      await navigator.clipboard.writeText(`${shareText}\n\n🌟 ดูคำทำนายเต็มที่: ${shareUrl}`);
+      
       toast({
         title: t('copySuccess'),
         description: t('copyDescription'),
       });
     } catch (error) {
-      toast({
-        title: t('copyError'),
-        description: t('copyErrorDescription'),
-        variant: 'destructive',
-      });
+      // Fallback to simple text copy
+      try {
+        await navigator.clipboard.writeText(`${shareText}\n\n🌟 ลองดูดวงที่: ${window.location.origin}`);
+        toast({
+          title: t('copySuccess'),
+          description: t('copyDescription'),
+        });
+      } catch (fallbackError) {
+        toast({
+          title: t('copyError'),
+          description: t('copyErrorDescription'),
+          variant: 'destructive',
+        });
+      }
     }
   };
 
-  const handleFacebookShare = () => {
-    const text = encodeURIComponent(shareText);
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin)}&quote=${text}`;
-    window.open(url, '_blank', 'width=600,height=400');
+  const handleFacebookShare = async () => {
+    try {
+      // Generate OG image URL for Facebook
+      const ogImageUrl = await generateOGImage();
+      const fullImageUrl = `${window.location.origin}${ogImageUrl}`;
+      
+      const facebookUrl = new URL('https://www.facebook.com/sharer/sharer.php');
+      facebookUrl.searchParams.set('u', window.location.origin);
+      facebookUrl.searchParams.set('quote', shareText);
+      
+      window.open(facebookUrl.toString(), '_blank', 'width=600,height=400');
+    } catch (error) {
+      // Fallback to simple share
+      const text = encodeURIComponent(shareText);
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin)}&quote=${text}`;
+      window.open(url, '_blank', 'width=600,height=400');
+    }
   };
 
   const handleTwitterShare = () => {
@@ -77,25 +112,48 @@ export function SocialShare({ reading, cardNames, cards, question }: SocialShare
     setIsGeneratingImage(true);
     try {
       const imageUrl = await generateOGImage();
+      const fullImageUrl = `${window.location.origin}${imageUrl}`;
       
-      // Create a temporary link to download the image
-      const response = await fetch(imageUrl);
+      // Fetch the image with proper headers
+      const response = await fetch(fullImageUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'image/*',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.status}`);
+      }
+      
       const blob = await response.blob();
+      
+      // Verify the blob has content
+      if (blob.size === 0) {
+        throw new Error('Downloaded image is empty');
+      }
+      
       const url = window.URL.createObjectURL(blob);
       
       const link = document.createElement('a');
       link.href = url;
       link.download = `hybridus-tarot-reading-${Date.now()}.png`;
+      link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, 100);
       
       toast({
         title: t('downloadSuccess'),
         description: t('downloadDescription'),
       });
     } catch (error) {
+      console.error('Download error:', error);
       toast({
         title: t('downloadError'),
         description: t('downloadErrorDescription'),
